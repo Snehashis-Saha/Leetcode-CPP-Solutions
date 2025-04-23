@@ -18,7 +18,7 @@ public:
 
         return result;
     }
-
+ 
 private:
     int digitSum(int num) {
         int sum = 0;
