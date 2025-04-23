@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int countLargestGroup(int n) {
+        unordered_map<int, int> sumCount;
+        int maxSize = 0, result = 0;
+
+        for (int i = 1; i <= n; ++i) {
+            int sum = digitSum(i);
+            sumCount[sum]++;
+            maxSize = max(maxSize, sumCount[sum]);
+        }
+
+        for (auto& it : sumCount) {
+            int key = it.first;
+            int freq = it.second;
+            if (freq == maxSize) result++;
+        }
+
+        return result;
+    }
+
+private:
+    int digitSum(int num) {
+        int sum = 0;
+        while (num) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+};
